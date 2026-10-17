@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.GptsApp/trendswap",
+  "title": "Trendswap AI",
+  "description": "AI face swap and viral meme video generation MCP server.",
+  "version": "1.0.0",
+  "websiteUrl": "https://trendswap.app",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://trendswap.app/api/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Trendswap API Key (Bearer sk_...)",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
