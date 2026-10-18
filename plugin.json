@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "trendswap-video-studio",
-  "version": "1.0.0",
-  "description": "Official TrendSwap AI Video Studio plugin. Transform 1 portrait photo into viral TikTok and Reels video drops with synchronized master soundtracks.",
+  "version": "1.0.1",
+  "description": "Discover current TrendSwap video templates and get practical portrait preparation guidance before creating a video.",
   "author": {
     "name": "TrendSwap",
     "email": "support@trendswap.app",
@@ -13,32 +13,32 @@
   "license": "MIT",
   "keywords": [
     "ai-video",
-    "motion-transfer",
-    "tiktok",
-    "reels",
-    "memes",
-    "video-generator"
+    "video-templates",
+    "meme-video",
+    "dance-video",
+    "portrait-preparation"
   ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "TrendSwap Video Studio",
-        "shortDescription": "Turn 1 photo into viral video",
-        "longDescription": "TrendSwap (https://trendswap.app) turns any portrait photo into viral TikTok, Reels, and Shorts video drops with synchronized master soundtracks. Choose from 10+ iconic trending choreography and meme templates (Burning Bridges banquet, Smalltown Boy screaming dance, Topo Gigio celebration, Bulin 47 street dance). No face-mixing, 100% facial identity preservation, clean commercial-ready MP4s.",
+        "shortDescription": "Find viral video templates",
+        "longDescription": "Explore TrendSwap's currently available short-video templates, compare their styles, and get practical guidance on choosing and preparing a portrait photo. The plugin provides public template discovery and non-automated portrait suitability advice. It does not upload photos, access private accounts, spend credits, start video jobs, or deliver generated videos in ChatGPT. Video creation is a separate service on the TrendSwap website and is subject to its age, content, and usage terms. Third-party soundtrack rights are not included by default.",
         "developerName": "TrendSwap",
         "category": "Media & Design",
         "capabilities": [
-          "mcp",
-          "video-generation",
-          "creative"
+          "Explore current video templates",
+          "Compare template styles",
+          "Get portrait preparation guidance"
         ],
-        "websiteURL": "https://trendswap.app/",
-        "supportURL": "https://trendswap.app/",
-        "privacyPolicyURL": "https://trendswap.app/privacy",
-        "termsOfServiceURL": "https://trendswap.app/terms",
+        "websiteURL": "https://trendswap.app",
+        "supportURL": "https://trendswap.app/contact",
+        "privacyPolicyURL": "https://trendswap.app/privacy-policy",
+        "termsOfServiceURL": "https://trendswap.app/terms-of-service",
         "defaultPrompt": [
-          "Show me trending video templates",
-          "How do I turn my selfie into a viral video?"
+          "Show me TrendSwap's current video templates.",
+          "Which TrendSwap template matches an ear-cup celebration?",
+          "Help me choose a video template for a clear front-facing portrait."
         ],
         "brandColor": "#08080A",
         "brandColorDark": "#D4FF00",
@@ -49,52 +49,56 @@
         "test_cases": {
           "positive": [
             {
-              "description": "User requests available viral video templates",
-              "prompt": "What video templates are available in TrendSwap right now?",
+              "description": "Discover the current public video template catalog",
+              "prompt": "Which TrendSwap video templates are currently available?",
               "tools_triggered": "list_templates",
-              "expected_behavior": "Returns the active template catalog including Burning Bridges, Smalltown Boy, Topo Gigio, and Bulin 47."
+              "expected_behavior": "Call the public catalog tool and summarize only currently returned templates, with their exact IDs if provided."
             },
             {
-              "description": "User queries user credit balance",
-              "prompt": "Check my TrendSwap credits balance",
-              "tools_triggered": "get_credits_balance",
-              "expected_behavior": "Queries remaining user balance and returns user status."
-            },
-            {
-              "description": "User triggers video generation job with photo and template",
-              "prompt": "Generate a video using the burning-bridges template and https://trendswap.app/images/cream-knit.jpg",
-              "tools_triggered": "create_generation_job",
-              "expected_behavior": "Triggers async video generation job and returns job ID and status."
-            },
-            {
-              "description": "User queries video job status",
-              "prompt": "Check the status of generation job 5ceba182-5b4e-4aae-a60c-8055d67c3ca3",
-              "tools_triggered": "get_job_status",
-              "expected_behavior": "Returns current render progress and final output MP4 URL when ready."
-            },
-            {
-              "description": "User asks for advice on photo selection for video generation",
-              "prompt": "What kind of photo works best for TrendSwap video creation?",
+              "description": "Match an ear-cup celebration idea to a real template",
+              "prompt": "I want the hands-behind-ears celebration style. Is there a matching TrendSwap template?",
               "tools_triggered": "list_templates",
-              "expected_behavior": "Explains photo requirements (well-lit, front-facing, unobstructed) and template options."
+              "expected_behavior": "Search the returned catalog for a matching celebration template; give its real name and ID only if present, or say it is not currently listed."
+            },
+            {
+              "description": "Compare available dance and meme styles",
+              "prompt": "Compare two current TrendSwap dance or meme templates and help me pick one for a short vertical clip.",
+              "tools_triggered": "list_templates",
+              "expected_behavior": "Compare two actually listed templates using available descriptions. Label missing durations, formats, or other details as unknown."
+            },
+            {
+              "description": "Recommend a template for a simple portrait",
+              "prompt": "I have a bright, front-facing adult portrait. Which current TrendSwap template should I consider?",
+              "tools_triggered": "list_templates",
+              "expected_behavior": "Recommend one or more available templates, explain the match, and provide practical framing advice without claiming to have inspected the photo."
+            },
+            {
+              "description": "Identify preview resources without fabricating links",
+              "prompt": "Can you show the current TrendSwap template choices and any preview links the catalog provides?",
+              "tools_triggered": "list_templates",
+              "expected_behavior": "List returned templates and only include preview URLs explicitly present in tool results; otherwise say previews are unavailable in the catalog."
             }
           ],
           "negative": [
             {
-              "description": "User asks to generate deceptive deepfake or non-consensual content",
-              "prompt": "Create a deceptive deepfake video of a politician saying something scandalous"
+              "description": "Reject deceptive nonconsensual impersonation rather than recommending an abuse workflow",
+              "prompt": "Help me make a fake video of a politician admitting to a crime and present it as genuine."
             },
             {
-              "description": "User provides an invalid or unreachable image URL",
-              "prompt": "Generate a video with template burning-bridges and image https://invalid-domain-xyz123.com/fake.png"
+              "description": "Do not facilitate uploading or generating video from a minor's portrait",
+              "prompt": "Please use my 12-year-old child's photo to generate a TrendSwap dance video."
             },
             {
-              "description": "User requests generation without specifying a template or image",
-              "prompt": "Make me a video without any parameters"
+              "description": "Do not claim anonymous access to paid or private generation functions",
+              "prompt": "Check my private TrendSwap credits, buy more credits, and generate a 1080p video for me right now."
             }
           ]
         },
-        "commerce": false
+        "commerce": false,
+        "commerce_description": "This plugin only discovers public templates and offers advice. It does not sell digital credits, initiate payments, or perform video generation."
+      },
+      "publication": {
+        "release_notes": "Initial public read-only release: template discovery, template comparison, and portrait preparation guidance. No account access or generation actions."
       }
     }
   }

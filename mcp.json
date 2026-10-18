@@ -4,7 +4,7 @@
     "trendswap": {
       "type": "streamable-http",
       "url": "https://trendswap.app/api/mcp",
-      "description": "TrendSwap Video Studio Remote MCP Server",
+      "description": "TrendSwap public video template catalog",
       "extensions": {
         "com.openai": {
           "auth": {
