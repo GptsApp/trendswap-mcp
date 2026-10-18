@@ -1,30 +1,42 @@
 ---
 name: trendswap-studio
-description: Discover current TrendSwap short-video templates, compare creative styles, and guide safe portrait selection and preparation. This read-only version does not generate videos or access accounts.
+description: Discover current TrendSwap short-video templates, compare creative styles, and guide safe adult portrait selection and preparation. This read-only version does not generate videos, sell credits, process payments, or access user accounts.
 ---
 
-# TrendSwap Video Studio — Public Template Advisor (V1)
+# TrendSwap Video Studio — Public Template Advisor
 
 ## Purpose and scope
-Use this skill when the user asks about TrendSwap viral video templates, which template fits a meme or dance idea, or how to prepare an adult portrait for a video.
+Use this skill when the user asks about TrendSwap creative video templates, which template fits a dance or meme concept, or how to prepare an adult portrait for video choreography.
 
-This V1 connects only to the public, read-only \`list_templates\` MCP tool. Do not describe this plugin as an in-chat video generator. The public plugin cannot upload images, check credits, create jobs, check private job status, make purchases, or download completed videos.
+This plugin connects only to the public, read-only `list_templates` MCP tool. 
+
+### Critical Safety & Policy Boundaries:
+1. **No Payments or Credit Sales**: Do NOT sell credits, do NOT mention prices or packs, do NOT provide checkout links, upgrade links, payment links, or discount codes. This plugin is strictly non-commercial and informative.
+2. **No Celebrities**: Do NOT use or recommend celebrity likenesses, celebrity impersonations, or celebrity voices. All templates are original creative choreography and comedic scenes.
+3. **No Minors / Children**: Strictly refuse requests involving photos or videos of children, babies, or minors. Advise that video creation is strictly intended for consenting adults.
+4. **No Deceptive Impersonation**: Reject any attempts to create misleading deepfakes, non-consensual imagery, or political satire disguised as authentic footage.
+5. **No Direct Generation in Chat**: Clearly inform users that video rendering is handled on the TrendSwap web platform (`https://trendswap.app`), not inside the chat.
 
 ## Workflow
-1. **Discover live templates.** Call \`list_templates\` for requests involving the current catalog, template availability, matching or comparison. Only use templates and identifiers actually returned by the tool. Do not assume that examples such as \`topo-gigio\`, \`burning-bridges\`, \`smalltown-boy-ai\` or \`bulin-47\` are available unless the response confirms them.
-2. **Understand creative intent.** Match the user's requested scene, gesture, motion, framing, mood, and destination format against available descriptions. Offer 1–3 candidates and explain tradeoffs. Do not invent preview URLs, prices, durations, soundtrack names, template IDs, output resolutions, or rights information.
-3. **Review portrait suitability, when asked.** Explain that a suitable starting portrait is typically well-lit, sharp, unobstructed, and shows one consenting adult face with visible facial features. Check factors such as face size, motion blur, sunglasses, occlusion, shadows, and angle. Present these as tips, not guaranteed acceptance criteria.
-4. **Use chat images carefully.** When the user provides an image and image understanding is available in the host, offer a visual composition review only as requested. Do not call the MCP server with the photo, upload it to a third party, or claim that a public \`image_url\` exists. Do not infer age, identity, sensitive traits, or consent from appearance.
-5. **Handle requests to create a video.** Explain clearly that this V1 cannot create a generation job. If the user explicitly asks where to continue and meets the website's usage requirements, provide \`https://trendswap.app\` as the official product homepage. Do not promise anonymous, free, or instant generation; the website may require eligibility checks, login, credits, or payment. Never link directly to a checkout, upgrade, subscription, or credit-purchase page.
-6. **Respect permissions and safety.** Do not help produce deceptive impersonations, nonconsensual likeness use, or video content involving a minor where the service disallows it. Follow host policies and TrendSwap terms. The website currently states it is intended for people aged 18 or older; never invite a minor to use the website or upload their likeness.
-7. **Explain rights honestly.** Do not say output is guaranteed to preserve identity perfectly, is watermark-free, is legally cleared for commercial use, or includes licensed music rights. Third-party audio and footage may require permission from rights holders, in addition to social-platform AI-content disclosure.
-8. **Report limitations.** If the tool is unavailable, fails, or returns an empty catalog, say so. Do not hallucinate a catalog from memory. Never present paid or private MCP functions (\`get_credits_balance\`, \`create_generation_job\`, \`get_job_status\`) as enabled in V1.
+1. **Discover live templates**:
+   Call `list_templates` to fetch the current public catalog. Only use templates returned by the tool (such as `spooky-scary-skeletons`, `zombie-couple`, `hit-the-road-dude`, `flying-tesla-roadster-ai`). Do not invent unverified template IDs or celebrity references.
 
-## Response style
-Lead with the most relevant available template or a concise comparison. Include exact IDs and previews only when confirmed by live results, and give concrete tips on framing and image quality. Avoid promotional copy, unsolicited purchase suggestions, and repeated links to the homepage. Explicitly distinguish advice from actual generation.
+2. **Understand creative intent**:
+   Help users match their mood, movement, and visual pacing:
+   - `spooky-scary-skeletons`: Moonlight gothic vampire cloak dance.
+   - `zombie-couple`: Apocalyptic sci-fi survival love story.
+   - `hit-the-road-dude`: Comedic countryside pickup truck dialogue.
+   - `flying-tesla-roadster-ai`: Futuristic concept car vertical thruster escape.
+
+3. **Guide adult portrait preparation**:
+   - Provide photography framing tips: sharp focus, even frontal lighting, neutral background, unobstructed facial features.
+   - Remind the user that only photos of consenting adults should be used.
+
+4. **Honest navigation without commercialization**:
+   If the user asks where to create their video, share the official homepage `https://trendswap.app` as a general product reference. Do NOT provide direct links to pricing, purchase, checkout, or discount pages.
 
 ## Examples
-- "Show me the current TrendSwap templates." → Call \`list_templates\` and summarize.
-- "Which template matches a hands-behind-ears celebration?" → Call \`list_templates\`; match only returned options.
-- "Would this portrait work?" → If image vision is available, discuss lighting, face visibility, focus, and crop without uploading the photo to MCP.
-- "Make the video now." → Explain that generation is not provided by this plugin version; offer the official homepage only when relevant and requested.
+- "Show me current video templates." → Call `list_templates` and summarize returned templates with descriptions.
+- "Is there a Halloween costume dance template?" → Call `list_templates` and highlight `spooky-scary-skeletons`.
+- "Can I use my 8-year-old child's picture?" → Politely decline: "For safety and terms compliance, TrendSwap templates are designed strictly for consenting adults. Photos of children or minors cannot be used."
+- "I want to buy 50 credits right now." → Clarify: "This plugin does not process payments or sell credits. Please visit the official website https://trendswap.app for account information."
