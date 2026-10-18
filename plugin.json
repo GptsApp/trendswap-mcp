@@ -1,0 +1,101 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "trendswap-video-studio",
+  "version": "1.0.0",
+  "description": "Official TrendSwap AI Video Studio plugin. Transform 1 portrait photo into viral TikTok and Reels video drops with synchronized master soundtracks.",
+  "author": {
+    "name": "TrendSwap",
+    "email": "support@trendswap.app",
+    "url": "https://trendswap.app"
+  },
+  "homepage": "https://trendswap.app",
+  "repository": "https://github.com/GptsApp/trendswap-mcp",
+  "license": "MIT",
+  "keywords": [
+    "ai-video",
+    "motion-transfer",
+    "tiktok",
+    "reels",
+    "memes",
+    "video-generator"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "TrendSwap Video Studio",
+        "shortDescription": "Turn 1 photo into viral video",
+        "longDescription": "TrendSwap (https://trendswap.app) turns any portrait photo into viral TikTok, Reels, and Shorts video drops with synchronized master soundtracks. Choose from 10+ iconic trending choreography and meme templates (Burning Bridges banquet, Smalltown Boy screaming dance, Topo Gigio celebration, Bulin 47 street dance). No face-mixing, 100% facial identity preservation, clean commercial-ready MP4s.",
+        "developerName": "TrendSwap",
+        "category": "Media & Design",
+        "capabilities": [
+          "mcp",
+          "video-generation",
+          "creative"
+        ],
+        "websiteURL": "https://trendswap.app/",
+        "supportURL": "https://trendswap.app/",
+        "privacyPolicyURL": "https://trendswap.app/privacy",
+        "termsOfServiceURL": "https://trendswap.app/terms",
+        "defaultPrompt": [
+          "Show me trending video templates",
+          "How do I turn my selfie into a viral video?"
+        ],
+        "brandColor": "#08080A",
+        "brandColorDark": "#D4FF00",
+        "composerIcon": "./assets/composer-icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "User requests available viral video templates",
+              "prompt": "What video templates are available in TrendSwap right now?",
+              "tools_triggered": "list_templates",
+              "expected_behavior": "Returns the active template catalog including Burning Bridges, Smalltown Boy, Topo Gigio, and Bulin 47."
+            },
+            {
+              "description": "User queries user credit balance",
+              "prompt": "Check my TrendSwap credits balance",
+              "tools_triggered": "get_credits_balance",
+              "expected_behavior": "Queries remaining user balance and returns user status."
+            },
+            {
+              "description": "User triggers video generation job with photo and template",
+              "prompt": "Generate a video using the burning-bridges template and https://trendswap.app/images/cream-knit.jpg",
+              "tools_triggered": "create_generation_job",
+              "expected_behavior": "Triggers async video generation job and returns job ID and status."
+            },
+            {
+              "description": "User queries video job status",
+              "prompt": "Check the status of generation job 5ceba182-5b4e-4aae-a60c-8055d67c3ca3",
+              "tools_triggered": "get_job_status",
+              "expected_behavior": "Returns current render progress and final output MP4 URL when ready."
+            },
+            {
+              "description": "User asks for advice on photo selection for video generation",
+              "prompt": "What kind of photo works best for TrendSwap video creation?",
+              "tools_triggered": "list_templates",
+              "expected_behavior": "Explains photo requirements (well-lit, front-facing, unobstructed) and template options."
+            }
+          ],
+          "negative": [
+            {
+              "description": "User asks to generate deceptive deepfake or non-consensual content",
+              "prompt": "Create a deceptive deepfake video of a politician saying something scandalous"
+            },
+            {
+              "description": "User provides an invalid or unreachable image URL",
+              "prompt": "Generate a video with template burning-bridges and image https://invalid-domain-xyz123.com/fake.png"
+            },
+            {
+              "description": "User requests generation without specifying a template or image",
+              "prompt": "Make me a video without any parameters"
+            }
+          ]
+        },
+        "commerce": false
+      }
+    }
+  }
+}

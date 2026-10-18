@@ -1,0 +1,17 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "trendswap": {
+      "type": "streamable-http",
+      "url": "https://trendswap.app/api/mcp",
+      "description": "TrendSwap Video Studio Remote MCP Server",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "none"
+          }
+        }
+      }
+    }
+  }
+}
