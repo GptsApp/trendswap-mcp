@@ -70,6 +70,10 @@ Parameters:
 Parameters:
 - `job_id` (string, required): The ID of the queued or running generation job
 
+## Guides & Technical Documentation
+
+- **[AI Video Motion Transfer Guide (GitHub Gist)](https://gist.github.com/GptsApp/e4068f29acb5e8071b6decd8620a4180)**: Complete architectural guide on retargeting video motion to static portraits with zero identity drift.
+
 ## License
 
 MIT © [TrendSwap](https://trendswap.app)
