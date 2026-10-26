@@ -6,9 +6,9 @@ Official MCP Registry: `io.github.GptsApp/trendswap`
 
 ## Features
 
-- **`list_templates`**: List viral video and face-swap templates (`burning-bridges`, `bulin-47`, `topo-gigio`).
+- **`list_templates`**: List viral video and motion transfer templates (`burning-bridges`, `bulin-47`, `topo-gigio`).
 - **`get_credits_balance`**: Query remaining user balance and account info.
-- **`create_generation_job`**: Create AI face-swap video generation job with photo URL and template ID.
+- **`create_generation_job`**: Create AI motion transfer video generation job with photo URL and template ID.
 - **`get_job_status`**: Poll generation status and download finished HD video.
 
 ## Quick Start

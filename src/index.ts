@@ -15,7 +15,7 @@ serveStdio(
       },
       {
         instructions:
-          'Connects to Trendswap AI Video & Face Swap platform. Provides tools to list trending templates, check user credits, and create video generation jobs.',
+          'Connects to Trendswap AI Video & Motion Transfer platform. Provides tools to list trending templates, check user credits, and create video generation jobs.',
       }
     );
 
@@ -24,7 +24,7 @@ serveStdio(
       'list_templates',
       {
         description:
-          'List all available viral video & face-swap templates on Trendswap with their template IDs, descriptions, and preview URLs.',
+          'List all available viral video & motion transfer templates on Trendswap with their template IDs, descriptions, and preview URLs.',
         inputSchema: z.object({}).strict(),
       },
       async () => {
@@ -116,7 +116,7 @@ serveStdio(
       'create_generation_job',
       {
         description:
-          'Create an AI face-swap or portrait video generation task. Provide an image URL and a template ID.',
+          'Create an AI motion transfer or portrait video generation task. Provide an image URL and a template ID.',
         inputSchema: z.object({
           template: z
             .string()
